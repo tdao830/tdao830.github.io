@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- GOOGLE CODE -->
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+          /* global google */
+          /* global $ */
+          // Load the Visualization API and the corechart package.
+          google.charts.load('current', {'packages':['corechart']});
+    
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+    
+          // Callback that creates and populates a data table,
+          // instantiates the pie chart, passes in the data and
+          // draws it.
+          function drawChart() {
+
+             $.ajax({
+                url: "https://data.cityofchicago.org/resource/787j-mys9.json?$query=SELECT community_area, COUNT(*) AS total WHERE status='Open' GROUP BY community_area ORDER BY total ASC",
+                type: "GET",
+                data: {
+                    }
+                })
+                .done(function(data) {
+                    var potholes = [];
+                    var com = [];
+                    var row = [];
+                    
+                    var data2 = new google.visualization.DataTable();
+                    /* global data 2 */
+                    data2.addColumn('string', 'Community Area');
+                    data2.addColumn('number', '# of Potholes');
+                    
+                    $.each(data, function(index, val){
+                    potholes[index] = parseInt(val.total);
+                    com[index] = val.community_area;
+                    data2.addRow([com[index],potholes[index]]);
+                    });   
+      
+                    // Set chart options
+                    var options = {'title':'How many potholes per community area',
+                                   'width':1500,
+                                   'height':800};
+            
+                    // Instantiate and draw our chart, passing in some options.
+                    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                    chart.draw(data2, options);
+                        })
+                .fail(function(err){
+                    throw err;
+                });
+            
+          }
+        </script>
+        <div id="chart_div"></div>
+    </body>
+</html>

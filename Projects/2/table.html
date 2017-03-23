@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- GOOGLE CODE -->
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <div id="table_div"></div>
+        <div id="chart_div"></div>
+        <p></p>
+        <script>
+            /* global google */
+            /* global drawTable */
+            google.charts.load('current', {'packages':['table']});
+            google.charts.setOnLoadCallback(drawTable);
+            function drawTable() {
+
+                /* global $ */
+                /* global google */
+                /* global drawTable */
+                /* getting number of potholes per community area*/
+                
+                $.ajax({
+                url: "https://data.cityofchicago.org/resource/787j-mys9.json?$query=SELECT community_area, COUNT(*) AS total WHERE status='Open' GROUP BY community_area ORDER BY total ASC",
+                type: "GET",
+                data: {
+                    }
+                })
+                .done(function(data) {
+                    var potholes = [];
+                    var com = [];
+                    var row = [];
+                    
+                    var data2 = new google.visualization.DataTable();
+                    /* global data 2 */
+                    data2.addColumn('number', '# of Potholes');
+                    data2.addColumn('number', 'Community Area');
+                    
+                    $.each(data, function(index, val){
+                    potholes[index] = parseInt(val.total);
+                    com[index] = parseInt(val.community_area);
+                    if(val.community_area == null)
+                    {
+                        com[index] = 0;
+                    }
+                    data2.addRow([potholes[index],com[index]]);
+                    });   
+      
+                    var table = new google.visualization.Table(document.getElementById('table_div'));
+        
+                    table.draw(data2, {showRowNumber: true, width: '100%', height: '100%'});
+                })
+                .fail(function(err){
+                    throw err;
+                });
+                
+
+            }
+        </script>
+        <script type="text/javascript">
+            /******************************************** Pie Chart *********************************/
+          
+             /*           
+            $.ajax({
+            url: "https://data.cityofchicago.org/resource/787j-mys9.json?$query=SELECT COUNT(*) AS total WHERE status='Open' GROUP BY community_area ORDER BY total ASC",
+            type: "GET",
+            data: {
+                }
+            })
+            .done(function(data) {
+            })
+            .fail(function(err){
+                throw err;
+            }); */
+        </script>
+    </body>
+</html>
