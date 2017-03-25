@@ -238,6 +238,12 @@ th {
   h3 {
     page-break-after: avoid;
   }
+  
+  .experience {
+    font-family: 'Exo 2'; 
+    font-weight: normal;
+    font-size: 16px;
+  }
   .navbar {
     display: none;
   }
