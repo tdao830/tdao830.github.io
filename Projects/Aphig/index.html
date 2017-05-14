@@ -1,0 +1,115 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+
+<head>
+    
+    <!-- Meta data for compatibility with android -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel=manifest href=manifest.json>
+    <meta name=mobile-web-app-capable content=yes>
+    <meta name=application-name content="Aphig">
+    
+    <!-- MDLite stylesheets -->
+    <title>Aphig</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-blue.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    
+    <!-- Formatting iframe display -->
+    <style>
+      iframe {
+          display: block;       /* iframes are inline by default */
+          background: #fafafa;
+          border: none;         /* Reset default border */
+          height: 100vh;        /* Viewport-relative units */
+          width: 100vw;
+      }
+    </style>
+</head>
+  <body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">AΦΓ</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Schools</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Sisters</a>
+          <a href="#fixed-tab-3" class="mdl-layout__tab">Media</a>
+        </div>
+      </header>
+      
+      <!------------------------------ Main Page ------------------------------>
+      <div class="mdl-layout__drawer">
+        <h3 style="text-align: center">About Us</h3>
+        <span style="text-align: left; font-size: 20px; font-style: bold"><br>Our Purpose</span>
+        <p><br>The purpose of this organization is to bring together all women of different nationalities through
+        the bonds of friendship and Sisterhood. Alpha Phi Gamma exists to provide service and Asian
+        Awareness to the University and the surrounding communities for the betterment of society. For
+        its members, this organization promotes scholarship and academic excellence, personal
+        development and leadership. </p>
+        
+        <iframe src="db.html"></iframe>
+      </div>
+      
+      <!------------------------------- Tabs ---------------------------------->
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content">
+            <!--------------------------- PAGE 1 ------------------------------>
+            <!-- link to map.html to display google map api -->
+            <iframe src="map.html"></iframe>
+          </div>
+        </section>
+        <!------------------------------- PAGE 2 ------------------------------>
+        <!-- link to google spreadsheet of UIC members -->
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content">
+            <iframe src="https://docs.google.com/spreadsheets/d/1KHGMLUmueE4bLmOjvqmIR122YNtT4DpxlbJqxGEWyrU/pubhtml" 
+            width="auto" height="500" frameBorder="0"></iframe>
+          </div>
+        </section>
+        <!------------------------------ PAGE 3 ------------------------------->
+        <!-- link to media.html to display media -->
+        <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+          <div class="page-content">
+            <iframe src="media.html"></iframe>
+          </div>
+          </section>
+      </main>
+    </div>
+    <!-- insteall service worker -->
+    <script>
+    /* global navigator */
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                 .register('./sw.js')
+                 .then(function() { console.log("Service Worker Registered"); });
+      }
+    </script>
+  </body>
+</html>

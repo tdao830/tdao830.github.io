@@ -1,0 +1,36 @@
+{
+  "name": "Aphig",
+  "short_name": "Aphig",
+  "icons": [{
+        "src": "1.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "2.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "3.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "4.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "5.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "6.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }, {
+        "src": "7.jpg",
+        "type": "image/jpg",
+        "sizes": "128x128"
+      }],
+  "start_url": "./BigProject.html?homescreen=1",
+  "display": "standalone",
+  "background_color": "#FFFFFF"
+}
