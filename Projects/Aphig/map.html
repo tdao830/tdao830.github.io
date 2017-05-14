@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- create option buttons for controlling heatmap display -->
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map"></div>
+    <script>
+
+      var map, heatmap;
+      
+      // Initialize map properties
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,                                      // zoomed to span a couple states
+          center: {lat: 41.881832, lng: -87.623177},    // centered at Chicago
+          mapTypeId: 'satellite'
+        });
+        
+        // Add heatmap layer
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+      }
+      
+      // Toggles heatmap display
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      // Change the color gradient of heatmap
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+  
+      // Change radius of heatmap
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      // Change visibility of heatmap
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Points of each school where Aphig is established
+      function getPoints() {
+        return [
+          new google.maps.LatLng(41.924810, -88.734448),
+          new google.maps.LatLng(34.049941, -117.815101),
+          new google.maps.LatLng(32.773994, -117.073606),
+          new google.maps.LatLng(32.233284, -110.948801),
+          new google.maps.LatLng(41.924325, -87.654862),
+          new google.maps.LatLng(41.877512, -87.627227),
+          new google.maps.LatLng(42.720303, -84.481587),
+          new google.maps.LatLng(38.933139, -92.373804),
+          new google.maps.LatLng(40.570290, -105.090163),
+          new google.maps.LatLng(36.105315, -115.138874),
+          new google.maps.LatLng(39.545898, -119.819372),
+          new google.maps.LatLng(44.994389, -93.272555),
+          new google.maps.LatLng(35.785055, -78.681945),
+          new google.maps.LatLng(40.912376, -73.123389),
+          new google.maps.LatLng(38.954344, -95.255796),
+        ];
+      }
+    </script>
+    
+    <!-- registers google map api using personal key -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChuAdG0XQGxg87tcD9UlNVREcezd-7QWw&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>
