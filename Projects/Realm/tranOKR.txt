@@ -1,0 +1,5 @@
+Deliverables 
+* Tuesday 3/7, 2pm   : Design Document (2 hours)
+* Tuesday 3/7, 5pm   : Model chosen for key (1 hour at most)
+* Tuesday 3/7, 7pm   : Level 1 Terrain (4-5 hours) 
+* Wednesday 3/7, 11pm: Create 3 different light sources for Level 1 (1-2 hours)

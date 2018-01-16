@@ -1,0 +1,2 @@
+1. Sound code referenced from class example
+2. Sound bit modified through audacity and taken from http://soundbible.com/1598-Electronic-Chime.html 

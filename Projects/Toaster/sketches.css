@@ -1,0 +1,83 @@
+body {
+    background-color: rgba(37, 138, 54, 0.32);
+}
+
+/* welcome bar */
+h1 {
+    font-size: 50px;
+    color: #333;
+    text-align: center;
+    background-color: rgba(5, 175, 159, 0.75);
+    width: auto;
+    padding: 25px;
+    margin: 50px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+}
+
+p {
+    width: 50%;
+}
+
+/* Interface */
+h2 {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: left;
+    height: 20px;
+    width:auto;
+    text-decoration: overline;
+    margin-top: 40px;
+    clear:both;
+}
+
+/* Interface */
+h3 {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: left;
+    height: 20px;
+    width:auto;
+    text-decoration: overline;
+    margin-top: 40px;
+    clear:both;
+}
+
+.panels {
+    border-radius: 5%;
+    width: 40%;
+    height: 40%;
+    margin-right: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/***************Menu bar**********/
+ul {
+    list-style-type: none;
+    margin-top: -50px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    font-size: 18px;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #000000;
+}
+/******************************/
